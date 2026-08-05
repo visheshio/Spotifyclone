@@ -94,3 +94,32 @@ body {
 .header>* {
     padding: 10px;
 }
+.spotifyplaylist{
+    padding: 15px;
+}
+.spotifyplaylist .card{
+    width: 180px;
+    height: 230px;
+}
+.card{
+    background-color: #7c7c7c3d;
+    border-radius: 10px;
+}
+.card >p{
+    padding-top: 5px;
+}
+.card img{
+    width: 100%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+.card > p{
+   font-size: 12px;
+}
+.cardContainer{
+    padding-top: 10px;
+    margin: 15px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
