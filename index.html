@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,63 +9,71 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="utility.css">
 </head>
+
 <body>
     <div class="container flex">
         <div class="left">
             <div class="home rounded bg-grey m-1 p-1" ">
-            <div class="logo">
-            <img src="img/logo.svg" alt="Spotify Logo">
+            <div class=" logo">
+                <img src="img/logo.svg" alt="Spotify Logo">
             </div>
             <ul>
                 <li><img src="img/home.svg" alt="Home">Home</li>
                 <li><img src="img/search.svg" alt="Search">Search</li>
             </ul>
-           </div>
-           <div class="library bg-grey rounded m-1 p-1">
-                <div class="heading">
-                    <img src="img/playlist.svg" alt="Your Library">
-                    <h3>Your Library</h3>
-                </div>
-                 <div class="footer flex">
-                    <div><a href="https://www.spotify.com/jp/legal/"><span>Legal</span></a></div>
-                    <div><a href="https://www.spotify.com/jp/privacy/"><span>Privacy Center</span></a></div>
-                    <div><a href="https://www.spotify.com/jp/legal/privacy-policy/"><span>Privacy Policy</span></a></div>
-                    <div><a href="https://www.spotify.com/jp/legal/cookies-policy/"><span>Cookies</span></a></div>
-                    <div><a href="https://www.spotify.com/jp/legal/privacy-policy/#s3"><span>About Ads</span></a></div>
-                    <div><a href="https://www.spotify.com/jp/accessibility/"><span>Accessibility</span></a></div>
-                </div>
-           </div>
         </div>
-        
-        <div class="right m-1 bg-grey rounded">
-            <div class="header flex">
-                <div class="nav">
-                <img src="img/leftarrow.svg" alt="Left Arrow">
-                <img src="img/rightarrow.svg" alt="Right Arrow">
-                </div>
-                <div class="button">
-                    <button class="signup">Sign up</button>     
-                    <button class="login">Log in</button>
-                </div>
+        <div class="library bg-grey rounded m-1 p-1">
+            <div class="heading">
+                <img src="img/playlist.svg" alt="Your Library">
+                <h3>Your Library</h3>
             </div>
-            <div class="spotifyplaylist">
-                <h2>Spotify Playlist</h2>
-                <div class="cardContainer ">
-                    <div class="card ">
-                        <img src="./img/happymood.jfif" alt="">
-                        <h4>Happy Moods</h4>
-                        <p>Chill vibes and happy music</p>
-                    </div>
-                    <d  iv class="card ">
-                        <img src="./img/musicmood.jfif" alt="">
-                        <h4>Music Moods</h4>
-                        <p>Summer vibes</p>
-                    </div>
-                </div>
+            <div class="footer flex">
+                <div><a href="https://www.spotify.com/jp/legal/"><span>Legal</span></a></div>
+                <div><a href="https://www.spotify.com/jp/privacy/"><span>Privacy Center</span></a></div>
+                <div><a href="https://www.spotify.com/jp/legal/privacy-policy/"><span>Privacy Policy</span></a></div>
+                <div><a href="https://www.spotify.com/jp/legal/cookies-policy/"><span>Cookies</span></a></div>
+                <div><a href="https://www.spotify.com/jp/legal/privacy-policy/#s3"><span>About Ads</span></a></div>
+                <div><a href="https://www.spotify.com/jp/accessibility/"><span>Accessibility</span></a></div>
             </div>
         </div>
     </div>
 
- <script src="script.js"></script>
+    <div class="right m-1 bg-grey rounded">
+        <div class="header flex">
+            <div class="nav">
+                <img src="img/leftarrow.svg" alt="Left Arrow">
+                <img src="img/rightarrow.svg" alt="Right Arrow">
+            </div>
+            <div class="button">
+                <button class="signup">Sign up</button>
+                <button class="login">Log in</button>
+            </div>
+        </div>
+        <div class="spotifyplaylist">
+            <h2>Spotify Playlist</h2>
+            <div class="cardContainer ">
+                <div class="card ">
+                    <div class="play-btn">
+                        <img src="./img/play.svg" alt="">
+                    </div>
+                    <img src="./img/happymood.jfif" alt="">
+                    <h4>Happy Moods</h4>
+                    <p>Chill vibes and happy music</p>
+                </div>
+                <div class="card ">
+                    <div class="play-btn">
+                        <img src="./img/play.svg" alt="">
+                    </div>
+                    <img src="./img/musicmood.jfif" alt="">
+                    <h4>Music Moods</h4>
+                    <p>Summer vibes</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
+
 </html>

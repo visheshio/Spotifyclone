@@ -1,0 +1,19 @@
+<svg style="width: 48px; height: 48px;" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="spotify-shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="1" stdDeviation="0.8" flood-color="#000000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  
+  <!-- Spotify Green Circle Background -->
+  <circle cx="12" cy="12" r="12" fill="#1ED760" filter="url(#spotify-shadow)" />
+  
+  <!-- Black Play Icon (Scaled down to 75%) -->
+  <g transform="translate(12, 12) scale(0.75) translate(-12, -12)">
+    <path 
+      fill="#000000" 
+      transform="translate(-1.25, 0)" 
+      d="m7.05 3.606 13.49 7.788a.7.7 0 0 1 0 1.212L7.05 20.394A.7.7 0 0 1 6 19.788V4.212a.7.7 0 0 1 1.05-.606" 
+    />
+  </g>
+</svg>
