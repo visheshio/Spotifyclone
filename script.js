@@ -9,7 +9,7 @@ async function getsongs() {
         const Element =as[index]
         if (Element.href.endsWith(".mp3"))
         {
-            songs.push(Element.href)
+            songs.push(Element.href.split("songs")[1].replaceAll("%20"," ").replaceAll("%5C", "").replaceAll("%5c", "").replaceAll("/", ""));
         }
         
     }
@@ -18,10 +18,19 @@ async function getsongs() {
 getsongs()
 
 async function main() {
-    let songs= await getsongs()
-    console.log(songs)
+    let songs= await getsongs();
+    console.log(songs);
 
-    var audio= new audio(songs[0])
-    audio.play()                
-    
+    let SongUl=document.querySelector(".songlist").getElementsByTagName("ul")[0]
+    for (const song  of songs){
+        SongUl.innerHTML=SongUl.innerHTML + `<li> ${song}</li>`;
+    }
+    var audio= new Audio(songs[0]);
+    audio.play();
+
+     audio.addEventListener("loadeddata", ()=>{
+        console.log(audio.duration,audio.currentSrc,audio.currentTime);
+    })
+
 }
+main()
