@@ -23,14 +23,18 @@ async function main() {
 
     let SongUl=document.querySelector(".songlist").getElementsByTagName("ul")[0]
     for (const song  of songs){
-        SongUl.innerHTML=SongUl.innerHTML + `<li> ${song}</li>`;
+        SongUl.innerHTML=SongUl.innerHTML + `<li>
+                    <img src="img/music.svg" alt="">
+                    <div class="info">
+                        <div>${song}</div>
+                        <div>Alan Walker</div>
+                    </div>
+                    <div class="playnow">
+                        <span>Play Now</span>
+                        <img src="img/playsong.svg" alt="">
+                    </div>
+                    </li>`;
     }
-    var audio= new Audio(songs[0]);
-    audio.play();
-
-     audio.addEventListener("loadeddata", ()=>{
-        console.log(audio.duration,audio.currentSrc,audio.currentTime);
-    })
-
+ 
 }
 main()
