@@ -1,4 +1,4 @@
-* {
+*{
     margin: 0;
     padding: 0;
     font-family: sportify-circular, Helvetica, Arial, sans-serif;
@@ -174,10 +174,12 @@ body {
 
 .playbar{
     position: fixed;
+    height: 30px;
     bottom: 0;
     width: 75%;
     background-color: rgba(0, 0, 0, 0.393);
     padding: 16px;
+    margin-bottom: 10px;
 }
 .playbuttons{
     display: flex;
@@ -219,3 +221,24 @@ body {
     width: 25px;
     margin-right: 10px;
 }
+.seekbar{
+    height: 2px;
+    width: 94%;
+    border: 2px solid white;
+    background-color: black;
+    position: absolute;
+    bottom: 0;
+    border-radius: 10px;
+    margin: 3px;
+}
+.circle{
+    width: 15px;
+    height: 15px;
+    border-radius: 10px;
+    background-color: white;
+    position:relative;
+    bottom:6px;
+    left: 0%;
+    transition: left 0.5s;
+}
+
