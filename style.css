@@ -174,9 +174,13 @@ body {
 
 .playbar{
     position: fixed;
+     bottom: 0;
+    left: 20;
+    width: 100%;
+    z-index: 1000;
     height: 30px;
     bottom: 0;
-    width: 75%;
+    width: 72vw;
     background-color: rgba(0, 0, 0, 0.393);
     padding: 16px;
     margin-bottom: 10px;
@@ -199,7 +203,9 @@ body {
    cursor: pointer;
    padding: 12px 0;
    border: 1px solid rgb(98, 97, 97);
-   margin: 12px 0;
+   margin-top: 12px;
+   margin-bottom: 12px;
+   margin-right: 5px;
    border-radius: 5px;
 }
 .songlist .info{
@@ -223,13 +229,14 @@ body {
 }
 .seekbar{
     height: 2px;
-    width: 94%;
+    width: 96%;
     border: 2px solid white;
     background-color: black;
     position: absolute;
     bottom: 0;
     border-radius: 10px;
     margin: 3px;
+    cursor: pointer;
 }
 .circle{
     width: 15px;
@@ -241,4 +248,13 @@ body {
     left: 0%;
     transition: left 0.5s;
 }
-
+.playbuttons img{
+    cursor: pointer;
+}
+.description{
+    display: flex;
+    justify-content: space-between;
+}
+.songinfo, .songtime{
+    padding: 0 12px;
+}
