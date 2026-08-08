@@ -268,9 +268,25 @@ body {
 .songinfo{
     padding: 0 4px;
 }
-.songtime{
-    padding-left: 24px;
+
+.timeninfo{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    padding-right: 10px;
+    gap: 5px;
 }
+.volume{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap:10px;
+}
+.range{
+    height: 10px;
+}
+
+
 @media (max-width:1200px) {
     .left{
         position:absolute;
