@@ -199,6 +199,24 @@ Distributed under the **MIT License**. See `LICENSE` for more details.
 
 ---
 
+## 🚀 Live Preview & Cloud Deployment
+
+This web application has been fully optimized to deploy instantly onto static hosting platforms like **Vercel** or **Netlify**.
+
+### Option A: Deploy with Vercel
+1. Install Vercel CLI (`npm i -g vercel`) or sign in at [Vercel](https://vercel.com).
+2. Run `vercel` in the project root directory.
+3. Follow the CLI prompts to deploy your site in seconds!
+
+### Option B: Deploy with Netlify
+1. Log in to [Netlify](https://netlify.com) and click **"Add new site"** -> **"Deploy manually"**.
+2. Drag and drop this project folder directly into Netlify.
+3. Alternatively, connect this repository to Netlify for automatic continuous deployment.
+
+*Note: With our static metadata database (`songs.json`), there is no backend directory scanning requirement on the live servers!*
+
+---
+
 ## 🙏 Acknowledgments
 
 - **Spotify** for the iconic web UI & design inspiration.
