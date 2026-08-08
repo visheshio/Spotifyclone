@@ -1,0 +1,30 @@
+{
+  "albums": [
+    {
+      "folder": "martingarrix",
+      "title": "Martin Garrix",
+      "description": "Chill vibes and happy music",
+      "coverSrc": "/img/marting.webp",
+      "songs": [
+        "Afrojack  Martin Garrix - Turn Up The Speakers (Official Music Video).mp3",
+        "Martin Garrix - Forbidden Voices (Official Music Video).mp3",
+        "Martin Garrix - Yottabyte www.my-free-mp3.net .mp3",
+        "Martin Garrix x Diplo – Angels [NEW SONG 2018!!!].mp3",
+        "Wizard - Martin Garrix(Official Audio).mp3"
+      ]
+    },
+    {
+      "folder": "Alanwalker",
+      "title": "Alan Walker",
+      "description": "Summer vibes",
+      "coverSrc": "/img/alanw.webp",
+      "songs": [
+        "Alan Walker - Alone.mp3",
+        "Alan Walker - Faded Karaoke copy.mp3",
+        "Alan Walker - Faded Karaoke.mp3",
+        "Alan Walker Routine Tropical Edm Remix -(Mr-Jatt.com).mp3",
+        "Alan_Walker_-_Sing_Me_To_Sleep.mp3"
+      ]
+    }
+  ]
+}

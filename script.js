@@ -1,6 +1,20 @@
 let currentsong = new Audio();
 let songs;
 let currFolder;
+let staticData = null;
+
+// Try to fetch static songs data on load
+async function loadStaticData() {
+    try {
+        let response = await fetch("/songs.json");
+        if (response.ok) {
+            staticData = await response.json();
+            console.log("Loaded static songs database:", staticData);
+        }
+    } catch (e) {
+        console.log("Could not load songs.json static fallback. Using dynamic scanning.", e);
+    }
+}
 
 function secondsToMinutesSeconds(seconds) {
     if (isNaN(seconds) || seconds < 0) {
@@ -18,17 +32,36 @@ function secondsToMinutesSeconds(seconds) {
 
 async function getsongs(folder) {
     currFolder = folder;
-    let a = await fetch(`/${folder}/`);
-    let response = await a.text();
-    let div = document.createElement("div");
-    div.innerHTML = response;
-    let as = div.getElementsByTagName("a");
-    songs = [];
-    for (let index = 0; index < as.length; index++) {
-        const Element = as[index];
-        if (Element.href.endsWith(".mp3")) {
-            let filename = Element.href.split("/").pop().split("%5C").pop();
-            songs.push(decodeURIComponent(filename));
+
+    // Check if we have static database matching this folder (checking suffix like 'songs/Alanwalker')
+    let cleanFolder = folder.replace(/^songs\//, "");
+    if (staticData && staticData.albums) {
+        let album = staticData.albums.find(a => a.folder === cleanFolder || a.folder === folder);
+        if (album) {
+            songs = album.songs;
+            console.log("Loaded songs from static DB for folder:", folder, songs);
+        }
+    }
+
+    // Fall back to dynamic scanning if not found or staticData is null
+    if (!songs || songs.length === 0) {
+        try {
+            let a = await fetch(`/${folder}/`);
+            let response = await a.text();
+            let div = document.createElement("div");
+            div.innerHTML = response;
+            let as = div.getElementsByTagName("a");
+            songs = [];
+            for (let index = 0; index < as.length; index++) {
+                const Element = as[index];
+                if (Element.href.endsWith(".mp3")) {
+                    let filename = Element.href.split("/").pop().split("%5C").pop();
+                    songs.push(decodeURIComponent(filename));
+                }
+            }
+        } catch (err) {
+            console.error("Dynamic scanning fallback failed:", err);
+            songs = [];
         }
     }
 
@@ -69,7 +102,9 @@ async function getsongs(folder) {
 }
 
 const playmusic = (track, pause = false) => {
-    currentsong.src = `/${currFolder}/` + encodeURIComponent(track);
+    // Correctly reference the folder path
+    let folderPath = currFolder.startsWith("songs/") ? `/${currFolder}/` : `/songs/${currFolder}/`;
+    currentsong.src = folderPath + encodeURIComponent(track);
     if (!pause) {
         currentsong.play();
         play.src = "/img/pause.svg";
@@ -86,13 +121,43 @@ const playmusic = (track, pause = false) => {
  */
 async function displayAlbums() {
     console.log("Scanning for albums...");
+    let cardContainer = document.querySelector(".cardContainer");
+
+    // If we have static database loaded, render from it directly to ensure perfect presentation
+    if (staticData && staticData.albums) {
+        for (let album of staticData.albums) {
+            let folder = album.folder;
+            let title = album.title;
+            let description = album.description;
+            let coverSrc = album.coverSrc;
+
+            let existingCard = cardContainer.querySelector(`[data-folder="${folder}"]`);
+            if (!existingCard) {
+                let coverImg = coverSrc
+                    ? `<img src="${coverSrc}" alt="${title}">`
+                    : `<div style="width:100%;height:120px;background:#333;border-radius:10px;display:flex;align-items:center;justify-content:center;color:#888;font-size:40px;">♫</div>`;
+
+                cardContainer.innerHTML += `
+                    <div data-folder="${folder}" class="card">
+                        <div class="play-btn">
+                            <img src="./img/play.svg" alt="">
+                        </div>
+                        ${coverImg}
+                        <h4>${title}</h4>
+                        <p>${description}</p>
+                    </div>`;
+            }
+        }
+        return;
+    }
+
+    // Dynamic scanning fallback
     try {
         let response = await fetch(`/songs/`);
         let html = await response.text();
         let div = document.createElement("div");
         div.innerHTML = html;
         let anchors = div.getElementsByTagName("a");
-        let cardContainer = document.querySelector(".cardContainer");
 
         for (let index = 0; index < anchors.length; index++) {
             const anchor = anchors[index];
@@ -152,18 +217,11 @@ async function displayAlbums() {
     }
 }
 
-async function main() {
-    // Discover and display album cards dynamically
-    await displayAlbums();
-
-    // Load the first available album's songs (default to Alanwalker)
-    songs = await getsongs("songs/Alanwalker");
-    playmusic(songs[0], true);
-    console.log("Loaded songs:", songs);
-
-    // Attach click handlers to ALL album cards (both hardcoded and dynamic)
+// Attach click listeners to all cards in the document
+function attachCardListeners() {
     Array.from(document.getElementsByClassName("card")).forEach(card => {
-        card.addEventListener("click", async () => {
+        // Remove existing listener if any by cloning or simply overwriting/using standard handler
+        card.onclick = async () => {
             let folder = card.dataset.folder;
             if (folder) {
                 console.log("Loading album:", folder);
@@ -172,8 +230,24 @@ async function main() {
                     playmusic(songs[0]);
                 }
             }
-        });
+        };
     });
+}
+
+async function main() {
+    // Load static database if available
+    await loadStaticData();
+
+    // Discover and display album cards dynamically/statically
+    await displayAlbums();
+
+    // Load the first available album's songs (default to Alanwalker)
+    songs = await getsongs("songs/Alanwalker");
+    playmusic(songs[0], true);
+    console.log("Loaded songs:", songs);
+
+    // Attach click handlers to ALL album cards (both hardcoded and dynamic)
+    attachCardListeners();
 
     // Play/Pause toggle
     play.addEventListener("click", () => {
