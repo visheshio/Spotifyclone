@@ -18,11 +18,23 @@ body {
     width: 25px;
     padding-top: 10px;
 }
-
+ .hamburger{
+    display: none;
+    }
+.hamburgercont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .left {
     width: 25vw;
 }
 
+.left .close{
+    position: absolute;
+    top: 30px;
+    right: 35px;
+}
 .right {
     width: 75vw;
     position: relative;
@@ -139,7 +151,7 @@ body {
     gap: 10px;
     flex-wrap: wrap;
     max-height: 60vh;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .card {
@@ -174,12 +186,10 @@ body {
 
 .playbar{
     position: fixed;
-     bottom: 0;
+    bottom: 0;
     left: 20;
     width: 100%;
-    z-index: 1000;
-    height: 30px;
-    bottom: 0;
+    min-height: 30px;
     width: 72vw;
     background-color: rgba(0, 0, 0, 0.393);
     padding: 16px;
@@ -229,7 +239,7 @@ body {
 }
 .seekbar{
     height: 2px;
-    width: 96%;
+    width: 94%;
     border: 2px solid white;
     background-color: black;
     position: absolute;
@@ -255,6 +265,29 @@ body {
     display: flex;
     justify-content: space-between;
 }
-.songinfo, .songtime{
-    padding: 0 12px;
+.songinfo{
+    padding: 0 4px;
+}
+.songtime{
+    padding-left: 24px;
+}
+@media (max-width:1200px) {
+    .left{
+        position:absolute;
+        left: -110%;
+        transition: all .3s;
+        z-index: 1;
+        width: 400px;
+        background-color: black;
+    }
+    .right{
+        width: 100vw;
+    }
+    .playbar{
+        width: 88vw;
+
+    }
+    .hamburger{
+        display: block;
+    }
 }
