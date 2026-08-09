@@ -8,6 +8,8 @@
 
 A modern, lightweight, and responsive **Spotify Web Player Clone** engineered using pure Vanilla HTML5, CSS3, and JavaScript (ES6+). This project replicates the iconic dark-themed interface of Spotify, featuring real-time audio playback, interactive seek controls, volume management, dynamic album track loading, and full mobile responsiveness without any external frameworks or libraries.
 
+LINK OF WEBSITE:  https://spotifymusic-pla.netlify.app/
+
 ---
 
 ## 📸 Screenshots & Preview
